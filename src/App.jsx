@@ -1,10 +1,16 @@
+import { css } from "@emotion/react";
+
 function App() {
   return (
-    <section className="container">
+    <section
+      css={css`
+        background: pink;
+      `}
+    >
       <p id="question"></p>
       <ul id="choices"></ul>
       <p id="comment"></p>
-      <div id="btn" className="disabled">
+      <div id="btn" css={{ backgroundColor: "blue" }}>
         Next
       </div>
       <div id="startBtn" className="disabled">

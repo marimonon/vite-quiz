@@ -1,43 +1,18 @@
 import { css } from "@emotion/react";
 import Btn from "./components/Btn";
+import Choices from "./components/Choices";
+import Comment from "./components/Comment";
+import Container from "./components/Container";
+import Question from "./components/Question";
 
 function App() {
   return (
-    <section
-      css={css`
-        width: 400px;
-        margin: 8px auto;
-        background-color: #fff;
-        border-radius: 4px;
-        padding: 16px;
-        position: relative;
-      `}
-    >
-      <p
-        id="question"
-        css={css`
-          margin-bottom: 16px;
-          font-weight: bold;
-        `}
-      ></p>
-      <ul
-        id="choices"
-        css={css`
-          list-style: none;
-          padding: 0;
-          margin-bottom: 16px;
-        `}
-      ></ul>
-      <p
-        id="comment"
-        css={css`
-          display: block;
-          padding: 10px;
-          background-color: #fff;
-        `}
-      ></p>
+    <Container>
+      <Question>問題文</Question>
+      <Choices />
+      <Comment>解説文</Comment>
       <Btn>わっしょい</Btn>
-    </section>
+    </Container>
   );
 }
 

@@ -36,7 +36,7 @@ function App() {
           background-color: #fff;
         `}
       ></p>
-      <Btn />
+      <Btn>わっしょい</Btn>
     </section>
   );
 }

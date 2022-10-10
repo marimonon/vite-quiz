@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-function Btn() {
+function Btn({ children }) {
   return (
     <button
       id="btn"
@@ -14,7 +14,7 @@ function Btn() {
         box-shadow: 0 4px 0 #2880b9;
       `}
     >
-      Next
+      {children}
     </button>
   );
 }

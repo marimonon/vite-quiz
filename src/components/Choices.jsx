@@ -7,6 +7,16 @@ function Choices() {
         list-style: none;
         padding: 0;
         margin-bottom: 16px;
+        li {
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          padding: 10px;
+          margin-bottom: 10px;
+          cursor: pointer;
+          &:hover {
+            background: #f8f8f8;
+          }
+        }
       `}
     >
       <li>カスピ海</li>

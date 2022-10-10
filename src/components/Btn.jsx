@@ -5,6 +5,7 @@ function Btn({ children }) {
     <button
       id="btn"
       css={css`
+        width: 100%;
         background: #3498db;
         padding: 8px;
         border-radius: 4px;

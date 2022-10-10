@@ -12,6 +12,10 @@ function Btn({ children }) {
         text-align: center;
         color: #fff;
         box-shadow: 0 4px 0 #2880b9;
+        border: none;
+        &:hover {
+          opacity: 0.7;
+        }
       `}
     >
       {children}

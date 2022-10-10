@@ -3,8 +3,11 @@ import Choices from "./components/Choices";
 import Comment from "./components/Comment";
 import Container from "./components/Container";
 import Question from "./components/Question";
+import quizData from "./util/quizData.json";
 
-const items = ["カスピ海", "カリブ海", "バナナ"];
+console.log(quizData);
+const items = quizData[0].c;
+
 function App() {
   return (
     <Container>

@@ -6,14 +6,15 @@ import Container from "./components/Container";
 import Question from "./components/Question";
 import quizData from "./util/quizData.json";
 
-console.log(quizData);
-const question = quizData[0].q;
-const items = quizData[0].c;
-const comment = quizData[0].m;
+// console.log(quizData);
 
 function App() {
   const [count, setCount] = useState(0);
   const onClick = () => setCount(count + 1);
+
+  const question = quizData[count].q;
+  const items = quizData[count].c;
+  const comment = quizData[count].m;
 
   return (
     <Container>

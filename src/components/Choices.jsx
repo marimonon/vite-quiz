@@ -1,6 +1,8 @@
 import { css } from "@emotion/react";
 
 function Choices() {
+  const items = ["カスピ海", "カリブ海", "バナナ"];
+
   return (
     <ul
       css={css`
@@ -9,9 +11,13 @@ function Choices() {
         margin-bottom: 16px;
       `}
     >
-      <li css={itemStyle}>カスピ海</li>
-      <li css={itemStyle}>カリブ海</li>
-      <li css={itemStyle}>琵琶湖</li>
+      {items.map((item) => {
+        return (
+          <li css={itemStyle} key={item}>
+            {item}
+          </li>
+        );
+      })}
     </ul>
   );
 }

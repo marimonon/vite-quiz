@@ -1,9 +1,9 @@
 import { css } from "@emotion/react";
 
-function Btn({ children }) {
+function Btn({ children, onClick }) {
   return (
     <button
-      id="btn"
+      onClick={onClick}
       css={css`
         width: 100%;
         background: #3498db;

@@ -6,16 +6,16 @@ import Question from "./components/Question";
 import quizData from "./util/quizData.json";
 
 console.log(quizData);
+const question = quizData[0].q;
 const items = quizData[0].c;
+const comment = quizData[0].m;
 
 function App() {
   return (
     <Container>
-      <Question>世界で一番大きな湖は？</Question>
+      <Question>{question}</Question>
       <Choices items={items} />
-      <Comment>
-        世界で一番大きな湖はカスピ海。海水です。ちなみに一番大きい炭水の湖はバイカル湖です。
-      </Comment>
+      <Comment>{comment}</Comment>
       <Btn>Next</Btn>
     </Container>
   );

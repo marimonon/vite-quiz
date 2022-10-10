@@ -1,4 +1,3 @@
-import { css } from "@emotion/react";
 import Btn from "./components/Btn";
 import Choices from "./components/Choices";
 import Comment from "./components/Comment";

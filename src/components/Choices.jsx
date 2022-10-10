@@ -1,8 +1,6 @@
 import { css } from "@emotion/react";
 
-function Choices() {
-  const items = ["カスピ海", "カリブ海", "バナナ"];
-
+function Choices({ items }) {
   return (
     <ul
       css={css`

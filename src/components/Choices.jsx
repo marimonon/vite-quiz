@@ -1,6 +1,13 @@
 import { css } from "@emotion/react";
 
 function Choices({ items }) {
+  const correct = (item, i) => {
+    console.log(item);
+    if (i == 0) {
+      console.log("wasshoi!");
+    }
+  };
+  console.log(items);
   return (
     <ul
       css={css`
@@ -9,9 +16,9 @@ function Choices({ items }) {
         margin-bottom: 16px;
       `}
     >
-      {items.map((item) => {
+      {items.map((item, i) => {
         return (
-          <li css={itemStyle} key={item}>
+          <li onClick={() => correct(item, i)} css={itemStyle} key={item}>
             {item}
           </li>
         );

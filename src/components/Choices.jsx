@@ -10,8 +10,13 @@ function Choices({ items, judge }) {
       `}
     >
       {items.map((item) => {
+        const light = item === items[0];
         return (
-          <li onClick={() => judge(item)} css={itemStyle} key={item}>
+          <li
+            onClick={() => judge(item)}
+            css={light ? lightItemStyle : itemStyle}
+            key={item}
+          >
             {item}
           </li>
         );
@@ -31,4 +36,9 @@ const itemStyle = css`
   &:hover {
     background: #f8f8f8;
   }
+`;
+
+const lightItemStyle = css`
+  ${itemStyle};
+  background: #d4edda;
 `;

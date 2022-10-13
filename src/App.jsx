@@ -20,6 +20,7 @@ function App() {
     console.log(item);
     if (item === items[0]) {
       console.log("correct!");
+      // item.classList.add("-light");
     }
   };
 

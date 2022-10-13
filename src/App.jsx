@@ -16,10 +16,17 @@ function App() {
   const items = quizData[count].c;
   const comment = quizData[count].m;
 
+  const judge = (item) => {
+    console.log(item);
+    if (item === items[0]) {
+      console.log("correct!");
+    }
+  };
+
   return (
     <Container>
       <Question>{question}</Question>
-      <Choices items={items} />
+      <Choices items={items} judge={judge} />
       <Comment>{comment}</Comment>
       <Btn onClick={onClick}>Next{count}</Btn>
     </Container>

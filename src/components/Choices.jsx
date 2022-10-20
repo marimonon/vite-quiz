@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-function Choices({ items, judge }) {
+function Choices({ items, judge, yourAnswer, correct }) {
   return (
     <ul
       css={css`
@@ -10,11 +10,10 @@ function Choices({ items, judge }) {
       `}
     >
       {items.map((item) => {
-        const light = item === items[0];
         return (
           <li
             onClick={() => judge(item)}
-            css={light ? lightItemStyle : itemStyle}
+            css={getItemStyle(item, yourAnswer)}
             key={item}
           >
             {item}
@@ -27,18 +26,34 @@ function Choices({ items, judge }) {
 
 export default Choices;
 
+const getItemStyle = (item, yourAnswer) => {
+  if (item === yourAnswer) {
+    return selectedItemStyle;
+  }
+  return normalItemStyle;
+};
+
 const itemStyle = css`
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 10px;
   margin-bottom: 10px;
+`;
+
+const normalItemStyle = css`
+  ${itemStyle};
   cursor: pointer;
   &:hover {
     background: #f8f8f8;
   }
 `;
 
-const lightItemStyle = css`
+const selectedItemStyle = css`
   ${itemStyle};
   background: #d4edda;
+`;
+
+const disabledItemStyle = css`
+  ${itemStyle};
+  background: #f8d8da;
 `;

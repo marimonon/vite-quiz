@@ -1,9 +1,9 @@
 import { css } from "@emotion/react";
 
-function Modal({ children, scoreClick }) {
+function Modal({ children, modal }) {
   return (
     <div>
-      <div css={getItemStyle(scoreClick)}>
+      <div css={getItemStyle(modal)}>
         <p>{children}</p>
         <button
           css={css`
@@ -24,7 +24,7 @@ function Modal({ children, scoreClick }) {
           閉じる
         </button>
       </div>
-      <div css={backGetItemStyle(scoreClick)}></div>
+      <div css={backGetItemStyle(modal)}></div>
     </div>
   );
 }
@@ -45,8 +45,8 @@ const backDisabledItemStyle = css`
   display: none;
 `;
 
-const backGetItemStyle = (scoreClick) => {
-  if (scoreClick) {
+const backGetItemStyle = (modal) => {
+  if (modal) {
     return backItemStyle;
   } else {
     return backDisabledItemStyle;
@@ -75,8 +75,8 @@ const disabledItemStyle = css`
   ${itemStyle};
   display: none;
 `;
-const getItemStyle = (scoreClick) => {
-  if (scoreClick) {
+const getItemStyle = (modal) => {
+  if (modal) {
     return normalItemStyle;
   } else {
     return disabledItemStyle;

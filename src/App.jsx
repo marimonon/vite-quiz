@@ -70,8 +70,8 @@ function App() {
       <Score last={last} scoreClick={scoreClick}>
         スコア表示
       </Score>
-      <Modal scoreClick={scoreClick}>
-        全{maxCount}問題中 {score}問正解です！
+      <Modal modal={modal}>
+        全{maxCount + 1}問題中 {score}問正解です！
       </Modal>
     </Container>
   );

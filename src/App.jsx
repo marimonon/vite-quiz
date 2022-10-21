@@ -3,6 +3,7 @@ import Btn from "./components/Btn";
 import Choices from "./components/Choices";
 import Comment from "./components/Comment";
 import Container from "./components/Container";
+import Modal from "./components/Modal";
 import Question from "./components/Question";
 import Score from "./components/Score";
 import quizData from "./util/quizData.json";
@@ -59,9 +60,12 @@ function App() {
       />
       <Comment yourAnswer={yourAnswer}>{comment}</Comment>
       <Btn btnClick={btnClick} yourAnswer={yourAnswer} last={last}>
-        Next　スコア{score}/{maxCount + 1}問目
+        Next
       </Btn>
       <Score last={last}>スコア表示</Score>
+      <Modal score={(score, maxCount)}>
+        全{maxCount}問題中 {score}問正解です！
+      </Modal>
     </Container>
   );
 }

@@ -54,7 +54,7 @@ function App() {
         yourAnswer={yourAnswer}
         correct={correct}
       />
-      <Comment>{comment}</Comment>
+      <Comment yourAnswer={yourAnswer}>{comment}</Comment>
       <Btn btnClick={btnClick} yourAnswer={yourAnswer} last={last}>
         Next{count}/{maxCount}
       </Btn>

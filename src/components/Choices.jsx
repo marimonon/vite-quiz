@@ -13,7 +13,7 @@ function Choices({ items, judge, yourAnswer, correct }) {
         return (
           <li
             onClick={() => judge(item)}
-            css={getItemStyle(item, yourAnswer)}
+            css={getItemStyle(item, yourAnswer, correct)}
             key={item}
           >
             {item}
@@ -26,9 +26,14 @@ function Choices({ items, judge, yourAnswer, correct }) {
 
 export default Choices;
 
-const getItemStyle = (item, yourAnswer) => {
+const getItemStyle = (item, yourAnswer, correct) => {
+  console.log(correct);
   if (item === yourAnswer) {
-    return selectedItemStyle;
+    if (correct) {
+      return selectedItemStyle;
+    } else {
+      return disabledItemStyle;
+    }
   }
   return normalItemStyle;
 };

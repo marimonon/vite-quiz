@@ -4,6 +4,7 @@ import Choices from "./components/Choices";
 import Comment from "./components/Comment";
 import Container from "./components/Container";
 import Question from "./components/Question";
+import Score from "./components/Score";
 import quizData from "./util/quizData.json";
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
       <Btn btnClick={btnClick} yourAnswer={yourAnswer} last={last}>
         Next　スコア{score}/{maxCount + 1}問目
       </Btn>
+      <Score last={last}>スコア表示</Score>
     </Container>
   );
 }

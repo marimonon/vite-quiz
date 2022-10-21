@@ -11,8 +11,9 @@ function App() {
   const [count, setCount] = useState(0);
   const maxCount = quizData.length - 2;
   const [last, setLast] = useState();
-  const onClick = () => {
+  const btnClick = () => {
     setCount(count + 1);
+    setYourAnswer();
     if (count === maxCount) {
       console.log("lastはtrueだよ");
       setLast(true);
@@ -38,7 +39,7 @@ function App() {
     }
   };
 
-  // console.log(yourAnswer + "=yourAnswerだよ");
+  console.log(yourAnswer + "=yourAnswerだよ");
   // console.log(correct + "=correctだよ");
   console.log(maxCount + "=maxCountだよ");
   console.log(count + "=countだよ");
@@ -54,7 +55,7 @@ function App() {
         correct={correct}
       />
       <Comment>{comment}</Comment>
-      <Btn onClick={onClick} last={last}>
+      <Btn btnClick={btnClick} yourAnswer={yourAnswer} last={last}>
         Next{count}/{maxCount}
       </Btn>
     </Container>

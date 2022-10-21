@@ -6,12 +6,21 @@ import Container from "./components/Container";
 import Question from "./components/Question";
 import quizData from "./util/quizData.json";
 
-// console.log(quizData);
-
 function App() {
   // useState(0)だとcountに０が入る
   const [count, setCount] = useState(0);
-  const onClick = () => setCount(count + 1);
+  const maxCount = quizData.length - 2;
+  const [last, setLast] = useState();
+  const onClick = () => {
+    setCount(count + 1);
+    if (count === maxCount) {
+      console.log("lastはtrueだよ");
+      setLast(true);
+    } else {
+      console.log("lastはfalseだよ");
+      setLast(false);
+    }
+  };
 
   const [yourAnswer, setYourAnswer] = useState("");
   const [correct, setCorrect] = useState();
@@ -23,15 +32,17 @@ function App() {
   const judge = (item) => {
     setYourAnswer(item);
     if (item === items[0]) {
-      console.log("correct!");
       setCorrect(true);
     } else {
-      console.log("wrong!");
       setCorrect(false);
     }
   };
-  console.log(yourAnswer);
-  console.log(correct);
+
+  // console.log(yourAnswer + "=yourAnswerだよ");
+  // console.log(correct + "=correctだよ");
+  console.log(maxCount + "=maxCountだよ");
+  console.log(count + "=countだよ");
+  console.log(last + "=lastだよ");
 
   return (
     <Container>
@@ -43,7 +54,9 @@ function App() {
         correct={correct}
       />
       <Comment>{comment}</Comment>
-      <Btn onClick={onClick}>Next{count}</Btn>
+      <Btn onClick={onClick} last={last}>
+        Next{count}/{maxCount}
+      </Btn>
     </Container>
   );
 }

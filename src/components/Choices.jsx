@@ -27,7 +27,6 @@ function Choices({ items, judge, yourAnswer, correct }) {
 export default Choices;
 
 const getItemStyle = (item, yourAnswer, correct) => {
-  console.log(correct);
   if (item === yourAnswer) {
     if (correct) {
       return selectedItemStyle;

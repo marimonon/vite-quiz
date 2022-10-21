@@ -2,13 +2,7 @@ import { css } from "@emotion/react";
 
 function Choices({ items, judge, yourAnswer, correct }) {
   return (
-    <ul
-      css={css`
-        list-style: none;
-        padding: 0;
-        margin-bottom: 16px;
-      `}
-    >
+    <ul css={lockItemStyle(yourAnswer)}>
       {items.map((item) => {
         return (
           <li
@@ -25,6 +19,27 @@ function Choices({ items, judge, yourAnswer, correct }) {
 }
 
 export default Choices;
+
+const lockItemStyle = (yourAnswer) => {
+  if (yourAnswer !== "") {
+    return lockListStyle;
+  } else {
+    return listStyle;
+  }
+};
+
+const listStyle = css`
+  list-style: none;
+  padding: 0;
+  margin-bottom: 16px;
+`;
+
+const lockListStyle = css`
+  ${listStyle};
+  li {
+    pointer-events: none;
+  }
+`;
 
 const getItemStyle = (item, yourAnswer, correct) => {
   if (item === yourAnswer) {

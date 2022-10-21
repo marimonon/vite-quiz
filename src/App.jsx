@@ -18,6 +18,7 @@ function App() {
 
   const [yourAnswer, setYourAnswer] = useState("");
   const [correct, setCorrect] = useState();
+  const [score, setScore] = useState(0);
 
   const question = quizData[count].q;
   const items = quizData[count].c;
@@ -27,23 +28,24 @@ function App() {
     setYourAnswer(item);
     if (item === items[0]) {
       setCorrect(true);
+      setScore(score + 1);
     } else {
       setCorrect(false);
     }
     if (count === maxCount) {
-      console.log("lastはtrueだよ");
+      // console.log("lastはtrueだよ");
       setLast(true);
     } else {
-      console.log("lastはfalseだよ");
+      // console.log("lastはfalseだよ");
       setLast(false);
     }
   };
 
-  console.log(yourAnswer + "=yourAnswerだよ");
+  // console.log(yourAnswer + "=yourAnswerだよ");
   // console.log(correct + "=correctだよ");
-  console.log(maxCount + "=maxCountだよ");
-  console.log(count + "=countだよ");
-  console.log(last + "=lastだよ");
+  // console.log(maxCount + "=maxCountだよ");
+  // console.log(count + "=countだよ");
+  // console.log(last + "=lastだよ");
 
   return (
     <Container>
@@ -56,7 +58,7 @@ function App() {
       />
       <Comment yourAnswer={yourAnswer}>{comment}</Comment>
       <Btn btnClick={btnClick} yourAnswer={yourAnswer} last={last}>
-        Next{count}/{maxCount}
+        Next　スコア{score}/{maxCount + 1}問目
       </Btn>
     </Container>
   );

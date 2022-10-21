@@ -13,7 +13,7 @@ function App() {
   const [last, setLast] = useState();
   const btnClick = () => {
     setCount(count + 1);
-    setYourAnswer();
+    setYourAnswer("");
     if (count === maxCount) {
       console.log("lastはtrueだよ");
       setLast(true);

@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 
 function Btn({ children, btnClick, yourAnswer, last }) {
   return (
-    <button onClick={btnClick} css={getItemStyle(last)}>
+    <button onClick={btnClick} css={getItemStyle(last, yourAnswer)}>
       {children}
       {end(last)}
     </button>
@@ -30,12 +30,13 @@ const normalItemStyle = css`
   box-shadow: 0 4px 0 #2880b9;
 `;
 
-// const selectedItemStyle = css`
-//   ${itemStyle};
-//   background: #3498db;
-//   box-shadow: 0 4px 0 #2880b9;
-//   opacity: 0.5;
-// `;
+const selectedItemStyle = css`
+  ${itemStyle};
+  background: #3498db;
+  box-shadow: 0 4px 0 #2880b9;
+  opacity: 0.5;
+  pointer-events: none;
+`;
 
 const disabledItemStyle = css`
   ${itemStyle};
@@ -43,11 +44,15 @@ const disabledItemStyle = css`
   box-shadow: 0 4px 0 #999;
   pointer-events: none;
 `;
-const getItemStyle = (last) => {
-  if (last) {
-    return disabledItemStyle;
+const getItemStyle = (last, yourAnswer) => {
+  if (yourAnswer === "") {
+    return selectedItemStyle;
   } else {
-    return normalItemStyle;
+    if (last) {
+      return disabledItemStyle;
+    } else {
+      return normalItemStyle;
+    }
   }
 };
 

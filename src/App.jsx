@@ -9,18 +9,11 @@ import quizData from "./util/quizData.json";
 function App() {
   // useState(0)だとcountに０が入る
   const [count, setCount] = useState(0);
-  const maxCount = quizData.length - 2;
+  const maxCount = quizData.length - 1;
   const [last, setLast] = useState();
   const btnClick = () => {
     setCount(count + 1);
     setYourAnswer("");
-    if (count === maxCount) {
-      console.log("lastはtrueだよ");
-      setLast(true);
-    } else {
-      console.log("lastはfalseだよ");
-      setLast(false);
-    }
   };
 
   const [yourAnswer, setYourAnswer] = useState("");
@@ -36,6 +29,13 @@ function App() {
       setCorrect(true);
     } else {
       setCorrect(false);
+    }
+    if (count === maxCount) {
+      console.log("lastはtrueだよ");
+      setLast(true);
+    } else {
+      console.log("lastはfalseだよ");
+      setLast(false);
     }
   };
 

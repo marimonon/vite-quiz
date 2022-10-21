@@ -32,17 +32,14 @@ const normalItemStyle = css`
 
 const selectedItemStyle = css`
   ${itemStyle};
-  background: #3498db;
-  box-shadow: 0 4px 0 #2880b9;
-  opacity: 0.5;
+  background: #ccc;
+  box-shadow: 0 4px 0 #999;
   pointer-events: none;
 `;
 
 const disabledItemStyle = css`
   ${itemStyle};
-  background: #ccc;
-  box-shadow: 0 4px 0 #999;
-  pointer-events: none;
+  display: none;
 `;
 const getItemStyle = (last, yourAnswer) => {
   if (yourAnswer === "") {

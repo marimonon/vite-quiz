@@ -1,7 +1,11 @@
 import { css } from "@emotion/react";
 
-function Score({ children, last }) {
-  return <button css={getItemStyle(last)}>{children}</button>;
+function Score({ children, last, scoreClick }) {
+  return (
+    <button onClick={scoreClick} css={getItemStyle(last)}>
+      {children}
+    </button>
+  );
 }
 
 export default Score;

@@ -43,6 +43,11 @@ function App() {
     }
   };
 
+  const [modal, setModal] = useState();
+  const scoreClick = () => {
+    setModal(true);
+  };
+
   // console.log(yourAnswer + "=yourAnswerだよ");
   // console.log(correct + "=correctだよ");
   // console.log(maxCount + "=maxCountだよ");
@@ -62,8 +67,10 @@ function App() {
       <Btn btnClick={btnClick} yourAnswer={yourAnswer} last={last}>
         Next
       </Btn>
-      <Score last={last}>スコア表示</Score>
-      <Modal score={(score, maxCount)}>
+      <Score last={last} scoreClick={scoreClick}>
+        スコア表示
+      </Score>
+      <Modal scoreClick={scoreClick}>
         全{maxCount}問題中 {score}問正解です！
       </Modal>
     </Container>

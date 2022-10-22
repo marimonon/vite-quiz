@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-function Btn({ children, btnClick, yourAnswer, last }) {
+function Btn({ children, btnClick, yourAnswer, last, startClick }) {
   return (
     <button onClick={btnClick} css={getItemStyle(last, yourAnswer)}>
       {children}

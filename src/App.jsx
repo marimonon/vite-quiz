@@ -9,7 +9,11 @@ import Score from "./components/Score";
 import quizData from "./util/quizData.json";
 
 function App() {
-  // useState(0)だとcountに０が入る
+  const [start, setStart] = useState(true);
+  const startClick = () => {
+    setStart(false);
+  };
+  console.log(start + "スタート");
   const [count, setCount] = useState(0);
   const maxCount = quizData.length - 1;
   const [last, setLast] = useState();
@@ -58,12 +62,19 @@ function App() {
         correct={correct}
       />
       <Comment yourAnswer={yourAnswer}>{comment}</Comment>
-      <Btn btnClick={btnClick} yourAnswer={yourAnswer} last={last}>
+      <Btn
+        btnClick={btnClick}
+        yourAnswer={yourAnswer}
+        last={last}
+        startClick={startClick}
+      >
         Next
       </Btn>
-      <Score last={last} scoreClick={scoreClick}>
-        スコア表示
-      </Score>
+      {last && (
+        <Score last={last} scoreClick={scoreClick}>
+          スコア表示
+        </Score>
+      )}
       {modal && (
         <Modal modal={modal}>
           全{maxCount + 1}問題中 {score}問正解です！

@@ -2,11 +2,16 @@ import { css } from "@emotion/react";
 
 function Choices({ items, judge, yourAnswer, correct }) {
   return (
-    <ul css={lockItemStyle(yourAnswer)}>
+    <ul css={listStyle}>
       {items.map((item) => {
+        const choiceClick = () => {
+          if (yourAnswer === "") {
+            judge(item);
+          }
+        };
         return (
           <li
-            onClick={() => judge(item)}
+            onClick={choiceClick}
             css={getItemStyle(item, yourAnswer, correct)}
             key={item}
           >
@@ -19,14 +24,6 @@ function Choices({ items, judge, yourAnswer, correct }) {
 }
 
 export default Choices;
-
-const lockItemStyle = (yourAnswer) => {
-  if (yourAnswer !== "") {
-    return lockListStyle;
-  } else {
-    return listStyle;
-  }
-};
 
 const listStyle = css`
   list-style: none;
@@ -44,10 +41,13 @@ const lockListStyle = css`
 const getItemStyle = (item, yourAnswer, correct) => {
   if (item === yourAnswer) {
     if (correct) {
-      return selectedItemStyle;
+      return correctItemStyle;
     } else {
-      return disabledItemStyle;
+      return wrongItemStyle;
     }
+  }
+  if (yourAnswer !== "") {
+    return disabledItemStyle;
   }
   return normalItemStyle;
 };
@@ -67,12 +67,17 @@ const normalItemStyle = css`
   }
 `;
 
-const selectedItemStyle = css`
+const correctItemStyle = css`
   ${itemStyle};
   background: #d4edda;
 `;
 
-const disabledItemStyle = css`
+const wrongItemStyle = css`
   ${itemStyle};
   background: #f8d8da;
+`;
+
+const disabledItemStyle = css`
+  ${itemStyle};
+  opacity: 0.5;
 `;

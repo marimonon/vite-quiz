@@ -1,28 +1,12 @@
 import { css } from "@emotion/react";
+import Btn from "./Btn";
 
-function Modal({ children, modal }) {
+function Modal({ children, reset }) {
   return (
     <>
       <div css={itemStyle}>
         <p>{children}</p>
-        <button
-          css={css`
-            width: 100%;
-            padding: 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            text-align: center;
-            color: #fff;
-            border: none;
-            background: #3498db;
-            box-shadow: 0 4px 0 #2880b9;
-            &:hover {
-              opacity: 0.7;
-            }
-          `}
-        >
-          閉じる
-        </button>
+        <Btn onClick={reset}>閉じる</Btn>
       </div>
       <div css={backItemStyle}></div>
     </>

@@ -14,19 +14,13 @@ const btnStyle = css`
   width: 100%;
   padding: 8px;
   border-radius: 4px;
-  cursor: pointer;
   text-align: center;
   color: #fff;
   border: none;
   background: #3498db;
   box-shadow: 0 4px 0 #2880b9;
+  cursor: pointer;
   &:hover {
     opacity: 0.7;
   }
-`;
-
-const selectedItemStyle = css`
-  background: #ccc;
-  box-shadow: 0 4px 0 #999;
-  pointer-events: none;
 `;

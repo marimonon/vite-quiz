@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-function Choices({ items, judge, yourAnswer, correct }) {
+function Choices({ items, judge, yourAnswer, correct, mode }) {
   return (
     <ul css={listStyle}>
       {items.map((item) => {
@@ -12,7 +12,7 @@ function Choices({ items, judge, yourAnswer, correct }) {
         return (
           <li
             onClick={choiceClick}
-            css={getItemStyle(item, yourAnswer, correct)}
+            css={getItemStyle(item, yourAnswer, correct, mode)}
             key={item}
           >
             {item}
@@ -31,14 +31,7 @@ const listStyle = css`
   margin-bottom: 16px;
 `;
 
-const lockListStyle = css`
-  ${listStyle};
-  li {
-    pointer-events: none;
-  }
-`;
-
-const getItemStyle = (item, yourAnswer, correct) => {
+const getItemStyle = (item, yourAnswer, correct, mode) => {
   if (item === yourAnswer) {
     if (correct) {
       return correctItemStyle;
@@ -46,7 +39,7 @@ const getItemStyle = (item, yourAnswer, correct) => {
       return wrongItemStyle;
     }
   }
-  if (yourAnswer !== "") {
+  if (mode === "judged") {
     return disabledItemStyle;
   }
   return normalItemStyle;

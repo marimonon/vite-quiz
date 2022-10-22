@@ -39,13 +39,6 @@ function App() {
     } else {
       setCorrect(false);
     }
-    if (count === maxCount) {
-      // console.log("lastはtrueだよ");
-      setLast(true);
-    } else {
-      // console.log("lastはfalseだよ");
-      setLast(false);
-    }
   };
 
   const [modal, setModal] = useState();

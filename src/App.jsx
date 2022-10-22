@@ -17,7 +17,7 @@ function App() {
   };
   console.log(start + "スタート");
   const [count, setCount] = useState(0);
-  const [last, setLast] = useState();
+  const last = count === maxCount;
   const btnClick = () => {
     setCount(count + 1);
     setYourAnswer("");
@@ -56,18 +56,10 @@ function App() {
         correct={correct}
       />
       <Comment yourAnswer={yourAnswer}>{comment}</Comment>
-      <Btn
-        btnClick={btnClick}
-        yourAnswer={yourAnswer}
-        last={last}
-        startClick={startClick}
-      >
-        Next
-      </Btn>
-      {last && (
-        <Score last={last} scoreClick={scoreClick}>
-          スコア表示
-        </Score>
+      {!last ? (
+        <Btn onClick={btnClick}>Next</Btn>
+      ) : (
+        <Btn onClick={scoreClick}>スコア表示</Btn>
       )}
       {modal && (
         <Modal modal={modal}>

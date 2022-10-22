@@ -5,7 +5,7 @@ function Choices({ items, judge, yourAnswer, correct, mode }) {
     <ul css={listStyle}>
       {items.map((item) => {
         const choiceClick = () => {
-          if (yourAnswer === "") {
+          if (mode === "answering") {
             judge(item);
           }
         };
@@ -32,6 +32,9 @@ const listStyle = css`
 `;
 
 const getItemStyle = (item, yourAnswer, correct, mode) => {
+  if (mode === "answering") {
+    return normalItemStyle;
+  }
   if (item === yourAnswer) {
     if (correct) {
       return correctItemStyle;
@@ -39,10 +42,7 @@ const getItemStyle = (item, yourAnswer, correct, mode) => {
       return wrongItemStyle;
     }
   }
-  if (mode === "judged") {
-    return disabledItemStyle;
-  }
-  return normalItemStyle;
+  return disabledItemStyle;
 };
 
 const itemStyle = css`

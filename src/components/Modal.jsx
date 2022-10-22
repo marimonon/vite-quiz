@@ -2,8 +2,8 @@ import { css } from "@emotion/react";
 
 function Modal({ children, modal }) {
   return (
-    <div>
-      <div css={getItemStyle(modal)}>
+    <>
+      <div css={itemStyle}>
         <p>{children}</p>
         <button
           css={css`
@@ -24,8 +24,8 @@ function Modal({ children, modal }) {
           閉じる
         </button>
       </div>
-      <div css={backGetItemStyle(modal)}></div>
-    </div>
+      <div css={backItemStyle}></div>
+    </>
   );
 }
 
@@ -41,18 +41,6 @@ const backItemStyle = css`
   z-index: 100;
 `;
 
-const backDisabledItemStyle = css`
-  display: none;
-`;
-
-const backGetItemStyle = (modal) => {
-  if (modal) {
-    return backItemStyle;
-  } else {
-    return backDisabledItemStyle;
-  }
-};
-
 const itemStyle = css`
   position: absolute;
   display: block;
@@ -66,19 +54,3 @@ const itemStyle = css`
   left: calc(50% - 160px);
   z-index: 200;
 `;
-
-const normalItemStyle = css`
-  ${itemStyle};
-`;
-
-const disabledItemStyle = css`
-  ${itemStyle};
-  display: none;
-`;
-const getItemStyle = (modal) => {
-  if (modal) {
-    return normalItemStyle;
-  } else {
-    return disabledItemStyle;
-  }
-};

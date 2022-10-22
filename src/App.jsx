@@ -48,12 +48,6 @@ function App() {
     setModal(true);
   };
 
-  // console.log(yourAnswer + "=yourAnswerだよ");
-  // console.log(correct + "=correctだよ");
-  // console.log(maxCount + "=maxCountだよ");
-  // console.log(count + "=countだよ");
-  // console.log(last + "=lastだよ");
-
   return (
     <Container>
       <Question>{question}</Question>
@@ -70,9 +64,11 @@ function App() {
       <Score last={last} scoreClick={scoreClick}>
         スコア表示
       </Score>
-      <Modal modal={modal}>
-        全{maxCount + 1}問題中 {score}問正解です！
-      </Modal>
+      {modal && (
+        <Modal modal={modal}>
+          全{maxCount + 1}問題中 {score}問正解です！
+        </Modal>
+      )}
     </Container>
   );
 }

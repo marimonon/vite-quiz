@@ -8,6 +8,8 @@ import Question from "./components/Question";
 import Score from "./components/Score";
 import quizData from "./util/quizData.json";
 
+const maxCount = quizData.length - 1;
+
 function App() {
   const [start, setStart] = useState(true);
   const startClick = () => {
@@ -15,7 +17,6 @@ function App() {
   };
   console.log(start + "スタート");
   const [count, setCount] = useState(0);
-  const maxCount = quizData.length - 1;
   const [last, setLast] = useState();
   const btnClick = () => {
     setCount(count + 1);

@@ -5,7 +5,6 @@ import Comment from "./components/Comment";
 import Container from "./components/Container";
 import Modal from "./components/Modal";
 import Question from "./components/Question";
-import Score from "./components/Score";
 import quizData from "./util/quizData.json";
 
 const maxCount = quizData.length - 1;

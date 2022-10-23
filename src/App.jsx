@@ -52,13 +52,14 @@ function App() {
     setCount(0);
     setYourAnswer("");
     setScore(0);
-    setMode("answering");
+    setMode("start");
   };
 
   return (
     <Container>
-      {mode === "start" && <Btn onClick={startClick}>Start</Btn>}
-      {mode !== "start" && (
+      {mode === "start" ? (
+        <Btn onClick={startClick}>Start</Btn>
+      ) : (
         <>
           <Question>{question}</Question>
           <Choices

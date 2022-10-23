@@ -5,6 +5,7 @@ import Comment from "./components/Comment";
 import Container from "./components/Container";
 import Modal from "./components/Modal";
 import Question from "./components/Question";
+import Start from "./components/Start";
 import quizData from "./util/quizData.json";
 
 const maxCount = quizData.length - 1;
@@ -58,7 +59,10 @@ function App() {
   return (
     <Container>
       {mode === "start" ? (
-        <Btn onClick={startClick}>Start</Btn>
+        <>
+          <Start>↓下のボタンを押してスタート</Start>
+          <Btn onClick={startClick}>Start</Btn>
+        </>
       ) : (
         <>
           <Question>{question}</Question>

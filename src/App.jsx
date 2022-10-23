@@ -12,6 +12,11 @@ const maxCount = quizData.length - 1;
 function App() {
   const [count, setCount] = useState(0);
   const last = count === maxCount;
+
+  const startClick = () => {
+    setMode("answering");
+  };
+
   const btnClick = () => {
     setCount(count + 1);
     setYourAnswer("");
@@ -22,8 +27,8 @@ function App() {
   const [correct, setCorrect] = useState();
   const [score, setScore] = useState(0);
 
-  // answering | judged | result
-  const [mode, setMode] = useState("answering");
+  // start | answering | judged | result
+  const [mode, setMode] = useState("start");
 
   const question = quizData[count].q;
   const items = quizData[count].c;
@@ -39,7 +44,6 @@ function App() {
       setCorrect(false);
     }
   };
-
   const scoreClick = () => {
     setMode("result");
   };
@@ -53,15 +57,20 @@ function App() {
 
   return (
     <Container>
-      <Question>{question}</Question>
-      <Choices
-        items={items}
-        judge={judge}
-        yourAnswer={yourAnswer}
-        correct={correct}
-        mode={mode}
-      />
-      {mode !== "answering" && (
+      {mode === "start" && <Btn onClick={startClick}>Start</Btn>}
+      {mode !== "start" && (
+        <>
+          <Question>{question}</Question>
+          <Choices
+            items={items}
+            judge={judge}
+            yourAnswer={yourAnswer}
+            correct={correct}
+            mode={mode}
+          />
+        </>
+      )}
+      {mode === "judged" && (
         <>
           <Comment>{comment}</Comment>
           {!last ? (

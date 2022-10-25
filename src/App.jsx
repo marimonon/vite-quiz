@@ -9,6 +9,9 @@ import Start from "./components/Start";
 import quizData from "./util/quizData.json";
 
 const maxCount = quizData.length - 1;
+let time = 0;
+let startTime = 0;
+let endTime = 0;
 
 function App() {
   const [count, setCount] = useState(0);
@@ -16,12 +19,14 @@ function App() {
 
   const startClick = () => {
     setMode("answering");
+    stopWatch();
   };
 
   const btnClick = () => {
     setCount(count + 1);
     setYourAnswer("");
     setMode("answering");
+    stopWatch();
   };
 
   const [yourAnswer, setYourAnswer] = useState("");
@@ -31,6 +36,23 @@ function App() {
   // start | answering | judged | result
   const [mode, setMode] = useState("start");
 
+  const stopWatch = () => {
+    if (mode === "start") {
+      console.log(time + "初期");
+      startTime = Date.now();
+      console.log(startTime + "走り出し");
+    } else if (mode === "answering") {
+      endTime = Date.now();
+      time = endTime - startTime;
+      console.log(time + "カウント済み");
+    } else if (mode === "judged") {
+      time = 0;
+      startTime = Date.now();
+      endTime = 0;
+      console.log(time);
+    }
+  };
+
   const question = quizData[count].q;
   const items = quizData[count].c;
   const comment = quizData[count].m;
@@ -38,6 +60,7 @@ function App() {
   const judge = (item) => {
     setYourAnswer(item);
     setMode("judged");
+    stopWatch();
     if (item === items[0]) {
       setCorrect(true);
       setScore(score + 1);
@@ -45,6 +68,7 @@ function App() {
       setCorrect(false);
     }
   };
+
   const scoreClick = () => {
     setMode("result");
   };

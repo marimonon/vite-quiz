@@ -14,46 +14,20 @@ const maxCount = quizData.length - 1;
 function App() {
   const [count, setCount] = useState(0);
   const last = count === maxCount;
+  const [startTime, setStartTime] = useState(() => new Date());
 
-  const [timer, setTimer] = useState("15.00秒");
-  const [startTime, setStartTime] = useState(0);
+  // 経過時間を習得する関数
+  const getElapsedTime = () => {
+    const elapsedTime = new Date() - startTime;
+    return elapsedTime / 1000;
+  };
 
   // 15秒でカウントダウン
   const deadTime = 15000;
 
-  // 現在の時間からスタートタイム時を引く
-  const time = new Date(Date.now() - startTime);
-
-  // カウント中の関数
-  function timerTime() {
-    // 秒部分を取り出す
-    const timerDisplay = () => {
-      const timerCount = deadTime - time;
-      const second = String(timerCount.Seconds()).padStart(2, "0");
-      const milli = String(timerCount.getMilliseconds()).padStart(1, "0");
-      // タイマーの値をセット
-      return (timerText = `${second}.${milli}秒`);
-    };
-
-    // timerの値で判定
-    if (timer < 0) {
-      // タイマー切れたら0秒表示
-      setTimer("0.00秒");
-    } else {
-      // setTimer("wasshoi");
-      timerDisplay();
-      setTimer(timerText);
-    }
-    console.log(timer);
-  }
-
   const startClick = () => {
     setMode("answering");
-    setStartTime(Date.now());
-    // 30m秒ごとに呼び出し
-    setTimeout(() => {
-      timerTime();
-    }, 30);
+    setStartTime(new Date());
   };
 
   const btnClick = () => {
@@ -68,23 +42,6 @@ function App() {
 
   // start | answering | judged | result
   const [mode, setMode] = useState("start");
-
-  // const stopWatch = () => {
-  //   if (mode === "start") {
-  //     console.log(time + "初期");
-  //     startTime = Date.now();
-  //     console.log(startTime + "走り出し");
-  //   } else if (mode === "answering") {
-  //     endTime = Date.now();
-  //     time = endTime - startTime;
-  //     console.log(time + "カウント済み");
-  //   } else if (mode === "judged") {
-  //     time = 0;
-  //     startTime = Date.now();
-  //     endTime = 0;
-  //     console.log(time);
-  //   }
-  // };
 
   const question = quizData[count].q;
   const items = quizData[count].c;
@@ -122,7 +79,7 @@ function App() {
         </>
       ) : (
         <>
-          <Time>{timer}</Time>
+          <Time getElapsedTime={getElapsedTime} />
           <Question>{question}</Question>
           <Choices
             items={items}

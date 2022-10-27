@@ -50,7 +50,6 @@ function App() {
   const judge = (item) => {
     setYourAnswer(item);
     setMode("judged");
-    console.log(timer);
     if (item === items[0]) {
       setCorrect(true);
       setScore(score + 1);

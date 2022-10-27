@@ -6,9 +6,16 @@ function Time({ getElapsedTime }) {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
+      // 計算した時間を表示させる
       setElapsedTime(getElapsedTime());
     }, 30);
-    return () => clearInterval(intervalId);
+    console.log("setIntervalを実行しました", intervalId);
+    // このコンポーネントが消える時にclearIntervalしている
+    return () => {
+      clearInterval(intervalId);
+      console.log("clearIntervalを実行しました", intervalId);
+      console.log(elapsedTime);
+    };
   }, []);
 
   return (

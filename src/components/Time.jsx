@@ -1,10 +1,13 @@
 import { css } from "@emotion/react";
 import { useEffect, useState } from "react";
 
-function Time({ getElapsedTime }) {
+function Time({ getElapsedTime, running }) {
   const [elapsedTime, setElapsedTime] = useState(0);
 
   useEffect(() => {
+    if (!running) {
+      return;
+    }
     const intervalId = setInterval(() => {
       // 計算した時間を表示させる
       setElapsedTime(getElapsedTime());
@@ -16,7 +19,7 @@ function Time({ getElapsedTime }) {
       console.log("clearIntervalを実行しました", intervalId);
       console.log(elapsedTime);
     };
-  }, []);
+  }, [running]);
 
   return (
     <p

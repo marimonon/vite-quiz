@@ -18,6 +18,9 @@ function App() {
 
   // 経過時間を習得する関数
   const getElapsedTime = () => {
+    if (mode === "judged") {
+      return;
+    }
     const elapsedTime = new Date() - startTime;
     return elapsedTime / 1000;
   };
@@ -34,6 +37,7 @@ function App() {
     setCount(count + 1);
     setYourAnswer("");
     setMode("answering");
+    setStartTime(new Date());
   };
 
   const [yourAnswer, setYourAnswer] = useState("");
@@ -78,7 +82,10 @@ function App() {
         </>
       ) : (
         <>
-          <Time getElapsedTime={getElapsedTime} />
+          <Time
+            getElapsedTime={getElapsedTime}
+            running={mode === "answering"}
+          />
           <Question>{question}</Question>
           <Choices
             items={items}

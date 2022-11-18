@@ -5,20 +5,21 @@ function Time({ getElapsedTime, running }) {
   const [elapsedTime, setElapsedTime] = useState(0);
 
   useEffect(() => {
-    if (!running) {
-      return;
-    }
-    const intervalId = setInterval(() => {
-      // 計算した時間を表示させる
+    if (running) {
+      const intervalId = setInterval(() => {
+        // 計算した時間を表示させる
+        setElapsedTime(getElapsedTime());
+      }, 30);
+      console.log("setIntervalを実行しました", intervalId);
+      // このコンポーネントが消える時にclearIntervalしている
+      return () => {
+        clearInterval(intervalId);
+        console.log("clearIntervalを実行しました", intervalId);
+        console.log(elapsedTime);
+      };
+    } else {
       setElapsedTime(getElapsedTime());
-    }, 30);
-    console.log("setIntervalを実行しました", intervalId);
-    // このコンポーネントが消える時にclearIntervalしている
-    return () => {
-      clearInterval(intervalId);
-      console.log("clearIntervalを実行しました", intervalId);
-      console.log(elapsedTime);
-    };
+    }
   }, [running]);
 
   return (

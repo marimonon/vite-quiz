@@ -18,9 +18,6 @@ function App() {
 
   // 経過時間を習得する関数
   const getElapsedTime = () => {
-    if (mode === "judged") {
-      return;
-    }
     const elapsedTime = new Date() - startTime;
     return elapsedTime / 1000;
   };

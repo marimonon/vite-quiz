@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Battle from "./components/Battle";
 import Btn from "./components/Btn";
 import Choices from "./components/Choices";
 import Comment from "./components/Comment";
@@ -79,6 +80,7 @@ function App() {
         </>
       ) : (
         <>
+          <Battle>wasshoi</Battle>
           <Time
             getElapsedTime={getElapsedTime}
             running={mode === "answering"}

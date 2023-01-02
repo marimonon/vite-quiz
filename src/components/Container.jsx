@@ -4,7 +4,7 @@ function Container({ children }) {
   return (
     <section
       css={css`
-        width: 400px;
+        max-width: 400px;
         margin: 8px auto;
         background-color: #fff;
         border-radius: 4px;

@@ -1,8 +1,8 @@
 function BattleBg() {
   return (
     <svg
-      width="1280"
-      height="320"
+      width="100%"
+      height="auto"
       viewBox="0 0 1280 320"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

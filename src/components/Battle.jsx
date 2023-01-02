@@ -12,10 +12,33 @@ function Battle({}) {
       `}
     >
       <BattleBg />
-      <Container>
-        <BattleHero />
-        <BattleEnemy />
-      </Container>
+      <div
+        css={css`
+          position: absolute;
+          display: flex;
+          align-items: flex-end;
+          left: 0;
+          top: 0;
+          width: 100%;
+        `}
+      >
+        <div
+          css={css`
+            width: 50%;
+            text-align: center;
+          `}
+        >
+          <BattleHero />
+        </div>
+        <div
+          css={css`
+            width: 50%;
+            text-align: center;
+          `}
+        >
+          <BattleEnemy />
+        </div>
+      </div>
     </div>
   );
 }

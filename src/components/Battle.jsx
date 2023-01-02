@@ -1,11 +1,21 @@
 import { css } from "@emotion/react";
 import BattleBg from "./common/BattleBg";
+import BattleEnemy from "./common/BattleEnemy";
+import BattleHero from "./common/BattleHero";
+import Container from "./Container";
 
 function Battle({}) {
   return (
-    <div>
+    <div
+      css={css`
+        position: relative;
+      `}
+    >
       <BattleBg />
-      <div></div>
+      <Container>
+        <BattleHero />
+        <BattleEnemy />
+      </Container>
     </div>
   );
 }

@@ -72,45 +72,51 @@ function App() {
   };
 
   return (
-    <Container>
+    <>
       {mode === "start" ? (
         <>
-          <Start>↓下のボタンを押してスタート</Start>
-          <Btn onClick={startClick}>Start</Btn>
+          <Container>
+            <Start>↓下のボタンを押してスタート</Start>
+            <Btn onClick={startClick}>Start</Btn>
+          </Container>
         </>
       ) : (
         <>
           <Battle />
-          <Time
-            getElapsedTime={getElapsedTime}
-            running={mode === "answering"}
-          />
-          <Question>{question}</Question>
-          <Choices
-            items={items}
-            judge={judge}
-            yourAnswer={yourAnswer}
-            correct={correct}
-            mode={mode}
-          />
+          <Container>
+            <Time
+              getElapsedTime={getElapsedTime}
+              running={mode === "answering"}
+            />
+            <Question>{question}</Question>
+            <Choices
+              items={items}
+              judge={judge}
+              yourAnswer={yourAnswer}
+              correct={correct}
+              mode={mode}
+            />
+          </Container>
         </>
       )}
-      {mode === "judged" && (
-        <>
-          <Comment>{comment}</Comment>
-          {!last ? (
-            <Btn onClick={btnClick}>Next</Btn>
-          ) : (
-            <Btn onClick={scoreClick}>スコア表示</Btn>
-          )}
-        </>
-      )}
-      {mode === "result" && (
-        <Modal reset={reset}>
-          全{maxCount + 1}問題中 {score}問正解です！
-        </Modal>
-      )}
-    </Container>
+      <Container>
+        {mode === "judged" && (
+          <>
+            <Comment>{comment}</Comment>
+            {!last ? (
+              <Btn onClick={btnClick}>Next</Btn>
+            ) : (
+              <Btn onClick={scoreClick}>スコア表示</Btn>
+            )}
+          </>
+        )}
+        {mode === "result" && (
+          <Modal reset={reset}>
+            全{maxCount + 1}問題中 {score}問正解です！
+          </Modal>
+        )}
+      </Container>
+    </>
   );
 }
 

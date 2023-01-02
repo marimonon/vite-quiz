@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 import BattleBg from "./common/BattleBg";
 import BattleEnemy from "./common/BattleEnemy";
 import BattleHero from "./common/BattleHero";
-import Container from "./Container";
+import BattleHp from "./common/BattleHp";
 
 function Battle({}) {
   return (
@@ -26,17 +26,21 @@ function Battle({}) {
           css={css`
             width: 50%;
             text-align: center;
+            padding: 20px;
           `}
         >
           <BattleHero />
+          <BattleHp />
         </div>
         <div
           css={css`
             width: 50%;
             text-align: center;
+            padding: 20px;
           `}
         >
           <BattleEnemy />
+          <BattleHp />
         </div>
       </div>
     </div>

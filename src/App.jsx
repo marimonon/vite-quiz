@@ -80,7 +80,7 @@ function App() {
         </>
       ) : (
         <>
-          <Battle>wasshoi</Battle>
+          <Battle />
           <Time
             getElapsedTime={getElapsedTime}
             running={mode === "answering"}

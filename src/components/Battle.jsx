@@ -1,15 +1,12 @@
 import { css } from "@emotion/react";
+import BattleBg from "./common/BattleBg";
 
-function Battle({ children }) {
+function Battle({}) {
   return (
-    <p
-      css={css`
-        margin-bottom: 16px;
-        font-weight: bold;
-      `}
-    >
-      {children}
-    </p>
+    <div>
+      <BattleBg />
+      <div></div>
+    </div>
   );
 }
 

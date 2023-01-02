@@ -20,7 +20,7 @@ function App() {
   // 経過時間を習得する関数
   const getElapsedTime = () => {
     const elapsedTime = new Date() - startTime;
-    return elapsedTime / 1000;
+    return (elapsedTime / 1000).toFixed(1);
   };
 
   // 15秒でカウントダウン
@@ -83,11 +83,11 @@ function App() {
       ) : (
         <>
           <Battle />
+          <Time
+            getElapsedTime={getElapsedTime}
+            running={mode === "answering"}
+          />
           <Container>
-            <Time
-              getElapsedTime={getElapsedTime}
-              running={mode === "answering"}
-            />
             <Question>{question}</Question>
             <Choices
               items={items}

@@ -23,13 +23,40 @@ function Time({ getElapsedTime, running }) {
   }, [running]);
 
   return (
-    <p
+    <div
       css={css`
-        margin-bottom: 16px;
+        margin-top: -40px;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-image: conic-gradient(#fbd960 0% 60%, #f00 60% 100%);
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 3;
+        font-size: 12px;
       `}
     >
-      経過時間: {elapsedTime} 秒
-    </p>
+      <p
+        css={css`
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: bold;
+          font-size: 16px;
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          background-color: #fff;
+        `}
+      >
+        {elapsedTime}
+        <span>秒</span>
+      </p>
+    </div>
   );
 }
 

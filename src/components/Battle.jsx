@@ -18,7 +18,7 @@ function Battle({}) {
           display: flex;
           align-items: flex-end;
           left: 0;
-          top: 0;
+          bottom: 10px;
           width: 100%;
         `}
       >

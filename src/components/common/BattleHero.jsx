@@ -1,7 +1,7 @@
 function BattleHero() {
   return (
     <svg
-      width="25%"
+      width="35%"
       height="auto"
       viewBox="0 0 161 129"
       fill="none"

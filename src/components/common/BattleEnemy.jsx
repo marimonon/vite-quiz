@@ -1,7 +1,7 @@
 function BattleEnemy() {
   return (
     <svg
-      width="50%"
+      width="70%"
       height="auto"
       viewBox="0 0 288 243"
       fill="none"

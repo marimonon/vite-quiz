@@ -8,7 +8,15 @@ function BattleHp() {
         height: 1vw;
         background-color: #f00;
       `}
-    ></div>
+    >
+      <div
+        css={css`
+          width: 100%;
+          height: 1vw;
+          background-color: #0f0;
+        `}
+      ></div>
+    </div>
   );
 }
 

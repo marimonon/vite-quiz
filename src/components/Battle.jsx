@@ -26,7 +26,8 @@ function Battle({}) {
           css={css`
             width: 50%;
             text-align: center;
-            padding: 20px;
+            padding-left: 20px;
+            padding-right: 50px;
           `}
         >
           <BattleHero />
@@ -36,7 +37,8 @@ function Battle({}) {
           css={css`
             width: 50%;
             text-align: center;
-            padding: 20px;
+            padding-left: 50px;
+            padding-right: 20px;
           `}
         >
           <BattleEnemy />

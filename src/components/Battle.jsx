@@ -12,35 +12,12 @@ function Battle({}) {
       `}
     >
       <BattleBg />
-      <div
-        css={css`
-          position: absolute;
-          display: flex;
-          align-items: flex-end;
-          left: 0;
-          bottom: 10px;
-          width: 100%;
-        `}
-      >
-        <div
-          css={css`
-            width: 50%;
-            text-align: center;
-            padding-left: 20px;
-            padding-right: 50px;
-          `}
-        >
+      <div css={battleBox}>
+        <div css={heroBox}>
           <BattleHero />
           <BattleHp />
         </div>
-        <div
-          css={css`
-            width: 50%;
-            text-align: center;
-            padding-left: 50px;
-            padding-right: 20px;
-          `}
-        >
+        <div css={enemyBox}>
           <BattleEnemy />
           <BattleHp />
         </div>
@@ -50,3 +27,26 @@ function Battle({}) {
 }
 
 export default Battle;
+
+const battleBox = css`
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  left: 0;
+  bottom: 10px;
+  width: 100%;
+`;
+
+const heroBox = css`
+  width: 50%;
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 50px;
+`;
+
+const enemyBox = css`
+  width: 50%;
+  text-align: center;
+  padding-left: 50px;
+  padding-right: 20px;
+`;

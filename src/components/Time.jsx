@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 
 function Time({ getElapsedTime, running }) {
   const [elapsedTime, setElapsedTime] = useState(0);
+  // 3秒でカウントダウン
+  const deadTime = 3000;
+  const remainTime = Math.max((deadTime / 1000 - elapsedTime).toFixed(), 0);
 
   useEffect(() => {
     if (running) {
@@ -37,7 +40,6 @@ function Time({ getElapsedTime, running }) {
         align-items: center;
         position: relative;
         z-index: 3;
-        font-size: 12px;
       `}
     >
       <p
@@ -53,8 +55,15 @@ function Time({ getElapsedTime, running }) {
           background-color: #fff;
         `}
       >
-        {elapsedTime}
-        <span>秒</span>
+        {remainTime}
+        <span
+          css={css`
+            font-weight: normal;
+            font-size: 10px;
+          `}
+        >
+          秒
+        </span>
       </p>
     </div>
   );

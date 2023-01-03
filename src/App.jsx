@@ -20,11 +20,8 @@ function App() {
   // 経過時間を習得する関数
   const getElapsedTime = () => {
     const elapsedTime = new Date() - startTime;
-    return (elapsedTime / 1000).toFixed(1);
+    return elapsedTime / 1000;
   };
-
-  // 15秒でカウントダウン
-  const deadTime = 15000;
 
   const startClick = () => {
     setMode("answering");

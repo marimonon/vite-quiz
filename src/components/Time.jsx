@@ -6,6 +6,9 @@ function Time({ getElapsedTime, running }) {
   // 3秒でカウントダウン
   const deadTime = 3000;
   const remainTime = Math.max((deadTime / 1000 - elapsedTime).toFixed(), 0);
+  const remainPercent =
+    ((remainTime / (deadTime / 1000)) * 100).toFixed() + "%";
+  console.log(remainPercent);
 
   useEffect(() => {
     if (running) {
@@ -32,7 +35,10 @@ function Time({ getElapsedTime, running }) {
         width: 80px;
         height: 80px;
         border-radius: 50%;
-        background-image: conic-gradient(#fbd960 0% 60%, #f00 60% 100%);
+        background-image: conic-gradient(
+          #fbd960 0% ${remainPercent},
+          #f00 ${remainPercent} 100%
+        );
         margin-left: auto;
         margin-right: auto;
         display: flex;

@@ -33,12 +33,14 @@ function App() {
     setCount(count + 1);
     setYourAnswer("");
     setMode("answering");
+    setAttack("none");
     setStartTime(new Date());
   };
 
   const [yourAnswer, setYourAnswer] = useState("");
   const [correct, setCorrect] = useState();
   const [score, setScore] = useState(0);
+  const [attack, setAttack] = useState("none");
 
   // start | answering | judged | result
   const [mode, setMode] = useState("start");
@@ -50,11 +52,13 @@ function App() {
   const judge = (item) => {
     setYourAnswer(item);
     setMode("judged");
-    if (item === items[0]) {
+    if (item === items[0] && attack === "none") {
       setCorrect(true);
       setScore(score + 1);
+      setAttack("hero");
     } else {
       setCorrect(false);
+      setAttack("enemy");
     }
   };
 
@@ -67,12 +71,14 @@ function App() {
     setYourAnswer("");
     setScore(0);
     setMode("start");
+    setAttack("none");
   };
 
   useEffect(() => {
     if (mode === "answering") {
       const timerId = setTimeout(() => {
         alert("時間切れです");
+        setAttack("enemy");
       }, deadTime);
       return () => clearTimeout(timerId);
     }

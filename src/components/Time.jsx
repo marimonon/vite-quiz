@@ -1,16 +1,13 @@
 import { css } from "@emotion/react";
 import { useEffect, useState } from "react";
 
-function Time({ getElapsedTime, running }) {
+function Time({ getElapsedTime, running, deadTime }) {
   const [elapsedTime, setElapsedTime] = useState(0);
-  // 3秒でカウントダウン
-  const deadTime = 3000;
   // 残り時間
   const remainTime = Math.max((deadTime / 1000 - elapsedTime).toFixed(), 0);
   // 残り時間をパーセントに
   const remainPercent =
     ((remainTime / (deadTime / 1000)) * 100).toFixed() + "%";
-  console.log(remainPercent);
 
   useEffect(() => {
     if (running) {

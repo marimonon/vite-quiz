@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Battle from "./components/Battle";
 import Btn from "./components/Btn";
 import Choices from "./components/Choices";
@@ -11,6 +11,7 @@ import Time from "./components/Time";
 import quizData from "./util/quizData.json";
 
 const maxCount = quizData.length - 1;
+const deadTime = 3000; // 時間制限3秒
 
 function App() {
   const [count, setCount] = useState(0);
@@ -68,6 +69,15 @@ function App() {
     setMode("start");
   };
 
+  useEffect(() => {
+    if (mode === "answering") {
+      const timerId = setTimeout(() => {
+        alert("時間切れです");
+      }, deadTime);
+      return () => clearTimeout(timerId);
+    }
+  }, [mode]);
+
   return (
     <>
       {mode === "start" ? (
@@ -79,10 +89,11 @@ function App() {
         </>
       ) : (
         <>
-          <Battle />
+          <Battle correct={correct} />
           <Time
             getElapsedTime={getElapsedTime}
             running={mode === "answering"}
+            deadTime={deadTime}
           />
           <Container>
             <Question>{question}</Question>

@@ -4,7 +4,7 @@ import BattleEnemy from "./common/BattleEnemy";
 import BattleHero from "./common/BattleHero";
 import BattleHp from "./common/BattleHp";
 
-function Battle({}) {
+function Battle({ correct }) {
   return (
     <div
       css={css`
@@ -14,11 +14,15 @@ function Battle({}) {
       <BattleBg />
       <div css={battleBox}>
         <div css={heroBox}>
-          <BattleHero />
+          <div css={heroAttack}>
+            <BattleHero />
+          </div>
           <BattleHp />
         </div>
         <div css={enemyBox}>
-          <BattleEnemy />
+          <div css={enemyAttack}>
+            <BattleEnemy />
+          </div>
           <BattleHp />
         </div>
       </div>
@@ -49,4 +53,13 @@ const enemyBox = css`
   text-align: center;
   padding-left: 50px;
   padding-right: 20px;
+`;
+
+const heroAttack = css`
+  transform: translateX(6vw);
+  animation: show 1s both;
+`;
+
+const enemyAttack = css`
+  transform: translateX(-6vw);
 `;

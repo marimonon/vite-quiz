@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-function BattleHp() {
+function BattleHp({ hp }) {
   return (
     <div
       css={css`
@@ -11,7 +11,7 @@ function BattleHp() {
     >
       <div
         css={css`
-          width: 100%;
+          width: ${hp}%;
           height: 1vw;
           background-color: #0f0;
         `}

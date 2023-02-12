@@ -1,11 +1,14 @@
 import { css } from "@emotion/react";
+import { useEffect } from "react";
 import BattleBg from "./common/BattleBg";
 import BattleEnemy from "./common/BattleEnemy";
 import BattleHero from "./common/BattleHero";
 import BattleHp from "./common/BattleHp";
 
-function Battle({ attack }) {
+function Battle({ attack, heroHp, enemyHp }) {
   console.log(attack);
+  console.log(heroHp);
+
   return (
     <div
       css={css`
@@ -18,13 +21,13 @@ function Battle({ attack }) {
           <div css={heroAttack}>
             <BattleHero />
           </div>
-          <BattleHp />
+          <BattleHp hp={heroHp} />
         </div>
         <div css={enemyBox}>
           <div css={enemyAttack}>
             <BattleEnemy />
           </div>
-          <BattleHp />
+          <BattleHp hp={enemyHp} />
         </div>
       </div>
     </div>

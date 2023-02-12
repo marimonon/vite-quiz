@@ -41,6 +41,8 @@ function App() {
   const [correct, setCorrect] = useState();
   const [score, setScore] = useState(0);
   const [attack, setAttack] = useState("none");
+  const [heroHp, setHeroHp] = useState(100);
+  const [enemyHp, setEnemyHp] = useState(100);
 
   // start | answering | judged | result
   const [mode, setMode] = useState("start");
@@ -56,9 +58,11 @@ function App() {
       setCorrect(true);
       setScore(score + 1);
       setAttack("hero");
+      setEnemyHp(enemyHp - 20);
     } else {
       setCorrect(false);
       setAttack("enemy");
+      setHeroHp(heroHp - 25);
     }
   };
 
@@ -70,6 +74,8 @@ function App() {
     setCount(0);
     setYourAnswer("");
     setScore(0);
+    setEnemyHp(100);
+    setHeroHp(100);
     setMode("start");
     setAttack("none");
   };
@@ -79,6 +85,7 @@ function App() {
       const timerId = setTimeout(() => {
         alert("時間切れです");
         setAttack("enemy");
+        setHeroHp(heroHp - 25);
         setYourAnswer(items[0]);
         setMode("judged");
       }, deadTime);
@@ -97,7 +104,7 @@ function App() {
         </>
       ) : (
         <>
-          <Battle attack={attack} />
+          <Battle attack={attack} heroHp={heroHp} enemyHp={enemyHp} />
           <Time
             getElapsedTime={getElapsedTime}
             running={mode === "answering"}

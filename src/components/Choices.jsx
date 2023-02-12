@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-function Choices({ items, judge, yourAnswer, correct, mode }) {
+function Choices({ items, judge, yourAnswer, correct, mode, attack }) {
   return (
     <ul css={listStyle}>
       {items.map((item) => {
@@ -12,7 +12,7 @@ function Choices({ items, judge, yourAnswer, correct, mode }) {
         return (
           <li
             onClick={choiceClick}
-            css={getItemStyle(item, yourAnswer, correct, mode)}
+            css={getItemStyle(item, yourAnswer, correct, mode, attack)}
             key={item}
           >
             {item}
@@ -31,12 +31,13 @@ const listStyle = css`
   margin-bottom: 16px;
 `;
 
-const getItemStyle = (item, yourAnswer, correct, mode) => {
+const getItemStyle = (item, yourAnswer, correct, mode, attack) => {
   if (mode === "answering") {
     return normalItemStyle;
   }
   if (item === yourAnswer) {
-    if (correct) {
+    // 正解かつ時間切れでない時
+    if (correct && attack !== "enemy") {
       return correctItemStyle;
     } else {
       return wrongItemStyle;

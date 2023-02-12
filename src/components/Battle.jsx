@@ -4,7 +4,8 @@ import BattleEnemy from "./common/BattleEnemy";
 import BattleHero from "./common/BattleHero";
 import BattleHp from "./common/BattleHp";
 
-function Battle({ correct }) {
+function Battle({ attack }) {
+  console.log(attack);
   return (
     <div
       css={css`

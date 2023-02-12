@@ -79,6 +79,8 @@ function App() {
       const timerId = setTimeout(() => {
         alert("時間切れです");
         setAttack("enemy");
+        setYourAnswer(items[0]);
+        setMode("judged");
       }, deadTime);
       return () => clearTimeout(timerId);
     }
@@ -95,7 +97,7 @@ function App() {
         </>
       ) : (
         <>
-          <Battle correct={correct} />
+          <Battle attack={attack} />
           <Time
             getElapsedTime={getElapsedTime}
             running={mode === "answering"}
@@ -109,6 +111,7 @@ function App() {
               yourAnswer={yourAnswer}
               correct={correct}
               mode={mode}
+              attack={attack}
             />
           </Container>
         </>

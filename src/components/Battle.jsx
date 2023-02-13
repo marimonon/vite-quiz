@@ -78,8 +78,8 @@ const enemyBox = css`
 `;
 
 const heroAttack = css`
-  animation: enemy 1s;
-  @keyframes enemy {
+  animation: hero 1s;
+  @keyframes hero {
     0% {
       transform: translateX(10vw);
     }

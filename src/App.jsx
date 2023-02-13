@@ -12,7 +12,7 @@ import quizData from "./util/quizData.json";
 
 const maxCount = quizData.length - 1;
 const deadTime = 3000; // 時間制限3秒
-const heroDamage = 50;
+const heroDamage = 40;
 const enemyDamage = 35;
 
 function App() {

@@ -1,14 +1,20 @@
 import { css } from "@emotion/react";
 import Btn from "./Btn";
+// 紙吹雪
+import useWindowSize from "react-use/lib/useWindowSize";
+import Confetti from "react-confetti";
 
 function Modal({ children, reset }) {
+  const { width, height } = useWindowSize();
   return (
     <>
       <div css={itemStyle}>
         <p>{children}</p>
         <Btn onClick={reset}>閉じる</Btn>
       </div>
-      <div css={backItemStyle}></div>
+      <div css={backItemStyle}>
+        <Confetti width={width} height={height} recycle={true} />
+      </div>
     </>
   );
 }

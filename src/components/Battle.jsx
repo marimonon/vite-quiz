@@ -78,18 +78,67 @@ const enemyBox = css`
 `;
 
 const heroAttack = css`
-  transform: translateX(6vw);
-  animation: show 1s both;
+  animation: enemy 1s;
+  @keyframes enemy {
+    0% {
+      transform: translateX(10vw);
+    }
+    50% {
+      transform: translate(10vw, 1vw);
+    }
+    75% {
+      transform: translate(10vw, 0);
+    }
+  }
 `;
 
 const heroDamage = css`
-  opacity: 0.3;
+  animation: damage 1s;
+  @keyframes damage {
+    0% {
+      opacity: 1;
+    }
+    25% {
+      opacity: 0.3;
+    }
+    45% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 0.3;
+    }
+  }
 `;
 
 const enemyAttack = css`
-  transform: translateX(-6vw);
+  animation: enemy 1s;
+  @keyframes enemy {
+    0% {
+      transform: translateX(-10vw);
+    }
+    50% {
+      transform: translate(-10vw, 1vw);
+    }
+    75% {
+      transform: translate(0, 0);
+    }
+  }
 `;
 
 const enemyDamage = css`
-  opacity: 0.3;
+  animation: damage 1s;
+  @keyframes damage {
+    0% {
+      opacity: 1;
+    }
+    25% {
+      opacity: 0.3;
+    }
+    45% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 0.3;
+    }
+  }
 `;

@@ -62,7 +62,11 @@ function App() {
     } else {
       setCorrect(false);
       setAttack("enemy");
-      setHeroHp(heroHp - 25);
+      setHeroHp(heroHp - 50);
+      if (heroHp <= 50) {
+        console.log("やられたぁ");
+        setMode("end");
+      }
     }
   };
 
@@ -83,11 +87,14 @@ function App() {
   useEffect(() => {
     if (mode === "answering") {
       const timerId = setTimeout(() => {
-        alert("時間切れです");
         setAttack("enemy");
-        setHeroHp(heroHp - 25);
+        setHeroHp(heroHp - 50);
         setYourAnswer(items[0]);
         setMode("judged");
+        if (heroHp <= 50) {
+          console.log("やられたぁ");
+          setMode("end");
+        }
       }, deadTime);
       return () => clearTimeout(timerId);
     }
@@ -138,6 +145,13 @@ function App() {
           <Modal reset={reset}>
             全{maxCount + 1}問題中 {score}問正解です！
           </Modal>
+        )}
+        {mode === "end" && (
+          <>
+            <Comment>{comment}</Comment>
+            <p>ゲームオーバー</p>
+            <Btn onClick={reset}>最初に戻る</Btn>
+          </>
         )}
       </Container>
     </>

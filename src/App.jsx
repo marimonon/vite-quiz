@@ -17,7 +17,6 @@ const enemyDamage = 35;
 
 function App() {
   const [count, setCount] = useState(0);
-  const last = count === maxCount;
   const [startTime, setStartTime] = useState(() => new Date());
 
   // 経過時間を習得する関数
@@ -63,7 +62,6 @@ function App() {
       setEnemyHp(enemyHp - enemyDamage);
       if (enemyHp <= enemyDamage) {
         console.log("魔物をたおしたぞ！");
-        setMode("result");
       }
     } else {
       setCorrect(false);
@@ -140,7 +138,7 @@ function App() {
         {mode === "judged" && (
           <>
             <Comment>{comment}</Comment>
-            {!last ? (
+            {!(enemyHp <= 0) ? (
               <Btn onClick={btnClick}>Next</Btn>
             ) : (
               <Btn onClick={scoreClick}>スコア表示</Btn>

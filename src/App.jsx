@@ -13,7 +13,7 @@ import quizData from "./util/quizData.json";
 const maxCount = quizData.length - 1;
 const deadTime = 3000; // 時間制限3秒
 const heroDamage = 50;
-const enemyDamage = 20;
+const enemyDamage = 35;
 
 function App() {
   const [count, setCount] = useState(0);
@@ -61,6 +61,9 @@ function App() {
       setScore(score + 1);
       setAttack("hero");
       setEnemyHp(enemyHp - enemyDamage);
+      if (enemyHp <= enemyDamage) {
+        console.log("魔物をたおした");
+      }
     } else {
       setCorrect(false);
       setAttack("enemy");

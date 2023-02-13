@@ -1,6 +1,9 @@
 import { css } from "@emotion/react";
 
 function BattleHp({ hp }) {
+  if (hp <= 0) {
+    hp = 0;
+  }
   return (
     <div
       css={css`

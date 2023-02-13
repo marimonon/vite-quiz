@@ -24,7 +24,7 @@ function Battle({ attack, heroHp, enemyHp }) {
           <BattleHp hp={heroHp} />
         </div>
         <div css={enemyBox}>
-          <div css={getEnemyStyle(attack)}>
+          <div css={getEnemyStyle(attack, enemyHp)}>
             <BattleEnemy />
           </div>
           <BattleHp hp={enemyHp} />
@@ -49,12 +49,16 @@ const getHeroStyle = (attack, heroHp) => {
   }
 };
 
-const getEnemyStyle = (attack) => {
+const getEnemyStyle = (attack, enemyHp) => {
   if (attack === "enemy") {
     return enemyAttack;
   }
   if (attack === "hero") {
-    return enemyDamage;
+    if (enemyHp <= 0) {
+      return enemyDead;
+    } else {
+      return enemyDamage;
+    }
   }
 };
 
@@ -164,6 +168,27 @@ const enemyDamage = css`
     }
     75% {
       opacity: 0.3;
+    }
+  }
+`;
+
+const enemyDead = css`
+  animation: damage 1s forwards;
+  @keyframes damage {
+    0% {
+      opacity: 1;
+    }
+    25% {
+      opacity: 0.3;
+    }
+    45% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 0;
     }
   }
 `;

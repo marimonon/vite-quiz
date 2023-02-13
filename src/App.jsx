@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Battle from "./components/Battle";
 import Btn from "./components/Btn";
 import Choices from "./components/Choices";
@@ -9,6 +9,7 @@ import Question from "./components/Question";
 import Start from "./components/Start";
 import Time from "./components/Time";
 import quizData from "./util/quizData.json";
+import shuffle from "./util/shuffle";
 
 const maxCount = quizData.length - 1;
 const deadTime = 10000; // 時間制限3秒
@@ -20,10 +21,10 @@ function App() {
   const [startTime, setStartTime] = useState(() => new Date());
 
   // 経過時間を習得する関数
-  const getElapsedTime = () => {
+  const getElapsedTime = useCallback(() => {
     const elapsedTime = new Date() - startTime;
     return elapsedTime / 1000;
-  };
+  }, [startTime]);
 
   const startClick = () => {
     setMode("answering");
@@ -51,6 +52,7 @@ function App() {
   const question = quizData[count].q;
   const items = quizData[count].c;
   const comment = quizData[count].m;
+  const shuffledItems = useMemo(() => shuffle(quizData[count].c), [count]);
 
   const judge = (item) => {
     setYourAnswer(item);
@@ -124,7 +126,7 @@ function App() {
           <Container>
             <Question>{question}</Question>
             <Choices
-              items={items}
+              items={shuffledItems}
               judge={judge}
               yourAnswer={yourAnswer}
               correct={correct}

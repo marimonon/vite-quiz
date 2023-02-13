@@ -1,10 +1,11 @@
 // 選択肢をシャッフル
 function shuffle(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
+  const shuffledArr = [...arr];
+  for (let i = shuffledArr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [arr[j], arr[i]] = [arr[i], arr[j]];
+    [shuffledArr[j], shuffledArr[i]] = [shuffledArr[i], shuffledArr[j]];
   }
-  return arr;
+  return shuffledArr;
 }
 
 export default shuffle;

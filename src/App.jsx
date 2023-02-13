@@ -12,6 +12,8 @@ import quizData from "./util/quizData.json";
 
 const maxCount = quizData.length - 1;
 const deadTime = 3000; // 時間制限3秒
+const heroDamage = 50;
+const enemyDamage = 20;
 
 function App() {
   const [count, setCount] = useState(0);
@@ -58,12 +60,12 @@ function App() {
       setCorrect(true);
       setScore(score + 1);
       setAttack("hero");
-      setEnemyHp(enemyHp - 20);
+      setEnemyHp(enemyHp - enemyDamage);
     } else {
       setCorrect(false);
       setAttack("enemy");
-      setHeroHp(heroHp - 50);
-      if (heroHp <= 50) {
+      setHeroHp(heroHp - heroDamage);
+      if (heroHp <= heroDamage) {
         console.log("やられたぁ");
         setMode("end");
       }
@@ -88,10 +90,10 @@ function App() {
     if (mode === "answering") {
       const timerId = setTimeout(() => {
         setAttack("enemy");
-        setHeroHp(heroHp - 50);
+        setHeroHp(heroHp - heroDamage);
         setYourAnswer(items[0]);
         setMode("judged");
-        if (heroHp <= 50) {
+        if (heroHp <= heroDamage) {
           console.log("やられたぁ");
           setMode("end");
         }

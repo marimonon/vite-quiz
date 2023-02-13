@@ -11,7 +11,7 @@ import Time from "./components/Time";
 import quizData from "./util/quizData.json";
 
 const maxCount = quizData.length - 1;
-const deadTime = 3000; // 時間制限3秒
+const deadTime = 10000; // 時間制限3秒
 const heroDamage = 40;
 const enemyDamage = 35;
 

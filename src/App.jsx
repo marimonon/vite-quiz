@@ -62,7 +62,8 @@ function App() {
       setAttack("hero");
       setEnemyHp(enemyHp - enemyDamage);
       if (enemyHp <= enemyDamage) {
-        console.log("魔物をたおした");
+        console.log("魔物をたおしたぞ！");
+        setMode("result");
       }
     } else {
       setCorrect(false);
@@ -148,7 +149,7 @@ function App() {
         )}
         {mode === "result" && (
           <Modal reset={reset}>
-            全{maxCount + 1}問題中 {score}問正解です！
+            ゲームクリア！<br></br> 全{count + 1}問題中 {score}問正解です！
           </Modal>
         )}
         {mode === "end" && (
